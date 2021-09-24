@@ -4,8 +4,8 @@ Gem::Specification.new do |spec|
   spec.summary = "OmniAuth Strategy for Ethereum"
   spec.description = "Authentication Strategy for OmniAuth to authenticate a user with an Ethereum account"
   spec.authors = ["Afri Schoedon"]
-  spec.email = 'gems@q9f.cc'
+  spec.email = 'gems@fault.dev'
   spec.files = ["lib/omniauth-ethereum.rb"]
-  spec.homepage = 'https://github.com/q9f/omniauth-ethereum'
+  spec.homepage = 'https://github.com/byz-f/omniauth-ethereum'
   spec.license = 'Apache-2.0'
 end
