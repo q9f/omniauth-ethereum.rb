@@ -1,10 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    digest-sha3-patched-ruby-3 (1.1.1)
-    eth-patched (0.4.13)
-      digest-sha3-patched-ruby-3 (~> 1.1)
+    eth-patched (0.4.14)
       ffi (~> 1.0)
+      keccak (~> 1.2)
       money-tree (~> 0.10.0)
       rlp (~> 0.7.3)
       scrypt (~> 3.0.6)
@@ -13,6 +12,7 @@ GEM
       ffi (>= 1.0.0)
       rake
     hashie (4.1.0)
+    keccak (1.2.0)
     money-tree (0.10.0)
       ffi
     omniauth (2.0.4)
