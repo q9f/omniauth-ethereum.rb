@@ -1,4 +1,5 @@
 require 'omniauth'
+require 'eth'
 
 module OmniAuth
   module Strategies
@@ -13,21 +14,53 @@ module OmniAuth
 
       # the `eth_address` will be the _fake_ unique identifier for the Ethereum strategy
       option :uid_field, :eth_address
+      option :fields, [:eth_message, :eth_address, :eth_signature]
+      option :uid_field, :eth_address
 
-      # the omniauth request phase
       def request_phase
-
-        # helper omniauth form to gather required data
-        form = OmniAuth::Form.new :title => "Ethereum Authentication", :url => callback_path
+        form = OmniAuth::Form.new :title => 'Ethereum Authentication', :url => callback_path
         options.fields.each do |field|
 
           # these fields are read-only and will be filled by javascript in the process
-          form.text_field field.to_s.capitalize.gsub("_", " "), field.to_s, readonly: true, class: field.to_s
+          # we were using readonly here before, why?
+          if field == :eth_message
+            form.label_field 'Eth message', 'eth_message'
+            form.html("<input type='hidden' id='eth_message' name='eth_message' value='#{now}' />")
+          else
+            form.text_field field.to_s.capitalize.tr('_', ' '), field.to_s
+          end
+
         end
 
         # the form button will be heavy on javascript, requesting account, nonce, and signature before submission
-        form.button "Sign-In with Ethereum", class: "eth_connect"
+        form.button 'Sign In'
         form.to_response
+      end
+
+      def callback_phase
+        address = request.params['eth_address'].downcase
+        message = request.params['eth_message']
+        signature = request.params['eth_signature']
+        signature_pubkey = Eth::Key.personal_recover message, signature
+        signature_address = (Eth::Utils.public_key_to_address signature_pubkey).downcase
+
+        unix_time = message.scan(/\d+/).first.to_i
+        ten_min = 10 * 60
+        return fail!(:invalid_nonce) unless unix_time + ten_min >= now && unix_time - ten_min <= now
+
+        return fail!(:invalid_credentials) unless signature_address == address
+
+        super
+      end
+
+      uid do
+        request.params[options.uid_field.to_s]
+      end
+
+      private
+
+      def now
+        Time.now.utc.to_i
       end
     end
   end
