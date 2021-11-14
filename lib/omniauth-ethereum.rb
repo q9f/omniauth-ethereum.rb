@@ -22,14 +22,12 @@ module OmniAuth
         options.fields.each do |field|
 
           # these fields are read-only and will be filled by javascript in the process
-          # we were using readonly here before, why?
           if field == :eth_message
             form.label_field 'Eth message', 'eth_message'
             form.html("<input type='hidden' id='eth_message' name='eth_message' value='#{now}' />")
           else
             form.text_field field.to_s.capitalize.tr('_', ' '), field.to_s
           end
-
         end
 
         # the form button will be heavy on javascript, requesting account, nonce, and signature before submission
