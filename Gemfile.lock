@@ -2,18 +2,18 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.4.4)
-    eth-patched (0.4.14)
-      ffi (~> 1.0)
+    eth (0.4.16)
+      ffi (~> 1.15)
       keccak (~> 1.2)
-      money-tree (~> 0.10.0)
-      rlp (~> 0.7.3)
-      scrypt (~> 3.0.6)
+      money-tree (~> 0.10)
+      rlp (~> 0.7)
+      scrypt (~> 3.0)
     ffi (1.15.4)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    hashie (4.1.0)
-    keccak (1.2.0)
+    hashie (5.0.0)
+    keccak (1.2.2)
     money-tree (0.10.0)
       ffi
     omniauth (2.0.4)
@@ -45,10 +45,9 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
-  x86_64-linux
 
 DEPENDENCIES
-  eth-patched (>= 0.4.14)
+  eth (>= 0.4.16)
   omniauth (>= 2.0)
   rack-test
   rspec (>= 3.10.0)
