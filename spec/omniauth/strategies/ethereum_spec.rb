@@ -48,7 +48,7 @@ RSpec.describe OmniAuth::Strategies::Ethereum do
 
         it 'fails with invalid nonce' do
           expect(last_response.status).to eq(302)
-          expect(last_response.location).to eq('/auth/failure?message=invalid_nonce&strategy=ethereum')
+          expect(last_response.location).to eq('/auth/failure?message=invalid_time&strategy=ethereum')
         end
       end
 
@@ -57,7 +57,7 @@ RSpec.describe OmniAuth::Strategies::Ethereum do
 
         it 'fails with invalid nonce' do
           expect(last_response.status).to eq(302)
-          expect(last_response.location).to eq('/auth/failure?message=invalid_nonce&strategy=ethereum')
+          expect(last_response.location).to eq('/auth/failure?message=invalid_time&strategy=ethereum')
         end
       end
     end

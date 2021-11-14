@@ -44,7 +44,7 @@ module OmniAuth
 
         unix_time = message.scan(/\d+/).first.to_i
         ten_min = 10 * 60
-        return fail!(:invalid_nonce) unless unix_time + ten_min >= now && unix_time - ten_min <= now
+        return fail!(:invalid_time) unless unix_time + ten_min >= now && unix_time - ten_min <= now
 
         return fail!(:invalid_credentials) unless signature_address == address
 
