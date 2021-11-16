@@ -23,15 +23,19 @@ module OmniAuth
 
           # these fields are read-only and will be filled by javascript in the process
           if field == :eth_message
-            form.label_field 'Eth message', 'eth_message'
             form.html("<input type='hidden' id='eth_message' name='eth_message' value='#{now}' />")
           else
-            form.text_field field.to_s.capitalize.tr('_', ' '), field.to_s
+            form.html("<input type='hidden' id='#{field.to_s}' name='#{field.to_s}' />")
           end
         end
 
         # the form button will be heavy on javascript, requesting account, nonce, and signature before submission
         form.button 'Sign In'
+        path = File.join( File.dirname(__FILE__), 'new_session.js')
+        js = File.read(path)
+        mod = "<script type='module'>\n#{js}\n</script>"
+
+        form.html(mod)
         form.to_response
       end
 
