@@ -1,3 +1,10 @@
+PATH
+  remote: .
+  specs:
+    omniauth-ethereum (0.1.0)
+      eth (~> 0.4.16)
+      omniauth (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,13 +51,12 @@ GEM
       ffi-compiler (>= 1.0, < 2.0)
 
 PLATFORMS
-  x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
-  eth (>= 0.4.16)
-  omniauth (>= 2.0)
-  rack-test
-  rspec (>= 3.10.0)
+  omniauth-ethereum!
+  rack-test (~> 1.1)
+  rspec (~> 3.10)
 
 BUNDLED WITH
-   2.2.27
+   2.2.28
