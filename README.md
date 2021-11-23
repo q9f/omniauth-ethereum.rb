@@ -1,6 +1,6 @@
 # omniauth-ethereum
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/q9f/omniauth-ethereum/Build)](https://github.com/q9f/omniauth-ethereum/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/q9f/omniauth-ethereum/Test)](https://github.com/q9f/omniauth-ethereum/actions)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/q9f/omniauth-ethereum)](https://github.com/q9f/omniauth-ethereum/releases)
 [![Gem](https://img.shields.io/gem/v/omniauth-ethereum)](https://rubygems.org/gems/omniauth-ethereum)
 [![GitHub top language](https://img.shields.io/github/languages/top/q9f/omniauth-ethereum?color=red)](https://github.com/q9f/omniauth-ethereum/pulse)
