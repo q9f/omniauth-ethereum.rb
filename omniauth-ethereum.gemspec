@@ -8,14 +8,14 @@ Gem::Specification.new do |spec|
   spec.description    = "Authentication Strategy for OmniAuth to authenticate a user with an Ethereum account"
   spec.authors        = ["Afri Schoedon"]
   spec.email          = 'gems@fault.dev'
-  spec.homepage       = 'https://github.com/q9f/omniauth-ethereum'
+  spec.homepage       = 'https://github.com/q9f/omniauth-ethereum.rb'
   spec.license        = 'Apache-2.0'
 
   spec.metadata       = {
-    'homepage_uri'    => 'https://github.com/q9f/omniauth-ethereum',
-    'source_code_uri' => 'https://github.com/q9f/omniauth-ethereum',
-    'github_repo'     => 'https://github.com/q9f/omniauth-ethereum',
-    'bug_tracker_uri' => 'https://github.com/q9f/omniauth-ethereum/issues',
+    'homepage_uri'    => 'https://github.com/q9f/omniauth-ethereum.rb',
+    'source_code_uri' => 'https://github.com/q9f/omniauth-ethereum.rb',
+    'github_repo'     => 'https://github.com/q9f/omniauth-ethereum.rb',
+    'bug_tracker_uri' => 'https://github.com/q9f/omniauth-ethereum.rb/issues',
   }.freeze
 
   spec.require_paths  = ["lib"]
