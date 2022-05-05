@@ -15,8 +15,12 @@ module OmniAuth
       # the `eth_address` will be the _fake_ unique identifier for the Ethereum strategy
       option :uid_field, :eth_address
 
+      # this will be shown on signature screen
+      option :custom_title, 'Hello from Ruby!'
+
       def request_phase
         form = OmniAuth::Form.new :title => 'Ethereum Authentication', :url => callback_path
+        form.html("<span class='custom_title'>#{options.custom_title}</span>")
         options.fields.each do |field|
 
           # these fields are read-only and will be filled by javascript in the process
