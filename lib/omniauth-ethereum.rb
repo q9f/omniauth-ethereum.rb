@@ -14,8 +14,6 @@ module OmniAuth
 
       # the `eth_address` will be the _fake_ unique identifier for the Ethereum strategy
       option :uid_field, :eth_address
-      option :fields, [:eth_message, :eth_address, :eth_signature]
-      option :uid_field, :eth_address
 
       def request_phase
         form = OmniAuth::Form.new :title => 'Ethereum Authentication', :url => callback_path
