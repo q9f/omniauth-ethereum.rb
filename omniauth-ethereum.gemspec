@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name           = 'omniauth-ethereum'
-  spec.version        = '0.1.0'
+  spec.version        = '0.2.0'
   spec.summary        = "OmniAuth Strategy for Ethereum"
   spec.description    = "Authentication Strategy for OmniAuth to authenticate a user with an Ethereum account"
   spec.authors        = ["Afri Schoedon"]
@@ -25,12 +25,12 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.7", "< 4.0"
 
   # OmniAuth is what this strategy is providing
-  spec.add_dependency 'omniauth', '~> 2.0'
+  spec.add_dependency 'omniauth', '~> 2.1'
 
   # Use Ruby-Eth for signature recovery
-  spec.add_dependency 'eth', '~> 0.4.16'
+  spec.add_dependency 'eth', '~> 0.5'
 
   # Spec tests
-  spec.add_development_dependency 'rspec', '~> 3.10'
+  spec.add_development_dependency 'rspec', '~> 3.11'
   spec.add_development_dependency 'rack-test', '~> 1.1'
 end
