@@ -42,17 +42,17 @@ module OmniAuth
       end
 
       def callback_phase
-        address = request.params['eth_address'].downcase
-        message = request.params['eth_message']
-        signature = request.params['eth_signature']
-        signature_pubkey = Eth::Key.personal_recover message, signature
-        signature_address = (Eth::Utils.public_key_to_address signature_pubkey).downcase
 
+        message = request.params['eth_message']
         unix_time = message.scan(/\d+/).first.to_i
         ten_min = 10 * 60
         return fail!(:invalid_time) unless unix_time + ten_min >= now && unix_time - ten_min <= now
 
-        return fail!(:invalid_credentials) unless signature_address == address
+        address = Eth::Address.new request.params['eth_address']
+        signature = request.params['eth_signature']
+        signature_pubkey = Eth::Signature.personal_recover message, signature
+        signature_address = Eth::Util.public_key_to_address(signature_pubkey)
+        return fail!(:invalid_credentials) unless signature_address.to_s == address.to_s
 
         super
       end
