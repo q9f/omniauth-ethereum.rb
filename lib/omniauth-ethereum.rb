@@ -1,5 +1,5 @@
-require 'omniauth'
-require 'eth'
+require "omniauth"
+require "eth"
 
 module OmniAuth
   module Strategies
@@ -16,10 +16,10 @@ module OmniAuth
       option :uid_field, :eth_address
 
       # this will be shown on signature screen
-      option :custom_title, 'Hello from Ruby!'
+      option :custom_title, "Hello from Ruby!"
 
       def request_phase
-        form = OmniAuth::Form.new :title => 'Ethereum Authentication', :url => callback_path
+        form = OmniAuth::Form.new :title => "Ethereum Authentication", :url => callback_path
         form.html("<span class='custom_title'>#{options.custom_title}</span>")
         options.fields.each do |field|
 
@@ -32,8 +32,8 @@ module OmniAuth
         end
 
         # the form button will be heavy on javascript, requesting account, nonce, and signature before submission
-        form.button 'Sign In'
-        path = File.join( File.dirname(__FILE__), 'new_session.js')
+        form.button "Sign In"
+        path = File.join(File.dirname(__FILE__), "new_session.js")
         js = File.read(path)
         mod = "<script type='module'>\n#{js}\n</script>"
 
@@ -42,14 +42,13 @@ module OmniAuth
       end
 
       def callback_phase
-
-        message = request.params['eth_message']
+        message = request.params["eth_message"]
         unix_time = message.scan(/\d+/).first.to_i
         ten_min = 10 * 60
         return fail!(:invalid_time) unless unix_time + ten_min >= now && unix_time - ten_min <= now
 
-        address = Eth::Address.new request.params['eth_address']
-        signature = request.params['eth_signature']
+        address = Eth::Address.new request.params["eth_address"]
+        signature = request.params["eth_signature"]
         signature_pubkey = Eth::Signature.personal_recover message, signature
         signature_address = Eth::Util.public_key_to_address(signature_pubkey)
         return fail!(:invalid_credentials) unless signature_address.to_s == address.to_s
