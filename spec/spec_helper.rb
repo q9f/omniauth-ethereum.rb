@@ -1,14 +1,13 @@
-require 'rspec'
-require 'rack/test'
-require 'omniauth'
-require 'omniauth/test'
+require "rspec"
+require "rack/test"
+require "omniauth"
+require "omniauth/test"
 
-require 'omniauth-ethereum'
+require "omniauth-ethereum"
 
 OmniAuth.config.request_validation_phase = nil
 
 RSpec.configure do |config|
-
   config.include Rack::Test::Methods
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
