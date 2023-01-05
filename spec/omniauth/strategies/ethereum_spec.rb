@@ -75,7 +75,7 @@ RSpec.describe OmniAuth::Strategies::Ethereum do
 
       it "fails with invalid credentials" do
         expect(last_response.status).to eq(302)
-        expect(last_response.location).to eq("/auth/failure?message=Invalid+signature+v+byte+0+for+chain+ID+1%21&strategy=ethereum")
+        expect(last_response.location).to eq("/auth/failure?message=unable+to+recover+public+key&strategy=ethereum")
       end
     end
 
