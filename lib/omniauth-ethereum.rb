@@ -43,7 +43,7 @@ module OmniAuth
 
       def callback_phase
         message = request.params["eth_message"]
-        unix_time = message.scan(/\d+/).first.to_i
+        unix_time = message.scan(/\d+/).last.to_i
         ten_min = 10 * 60
         return fail!(:invalid_time) unless unix_time + ten_min >= now && unix_time - ten_min <= now
 
