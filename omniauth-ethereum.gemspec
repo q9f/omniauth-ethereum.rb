@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
 
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = ">= 2.7", "< 4.0"
+  spec.required_ruby_version = ">= 3.0", "< 4.0"
 
   # OmniAuth is what this strategy is providing
   spec.add_dependency "omniauth", "~> 2.1"
