@@ -18,7 +18,7 @@ jobs:
         os: ['ubuntu-latest', 'macos-latest']
         ruby: ['3.0', '3.2', '3.3']
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: MacOs Dependencies
       run: |
         brew install --verbose pkg-config automake autogen libtool gmp libffi
